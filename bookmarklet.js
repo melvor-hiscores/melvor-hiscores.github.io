@@ -83,6 +83,17 @@
         return dataJson;
     }
 
+    function extractPets() {
+        dataJson = {};
+
+        let count = petUnlocked.filter(function(s) { return s; }).length;
+
+        /* final - merge into json */
+        dataJson['pets'] = count;
+
+        return dataJson;
+    }
+
     function extractSkills() {
         let dataJson = {};
 
@@ -139,12 +150,16 @@
         return dataJson;
     }
 
-    function packageJson(gpJson, skillsJson) {
+    function packageJson(gpJson, petsJson, skillsJson) {
 
         combinedJson = {};
 
         for (let eachKey in gpJson) {
             combinedJson[eachKey] = gpJson[eachKey]
+        }
+
+        for (let eachKey in petsJson) {
+            combinedJson[eachKey] = petsJson[eachKey]
         }
 
         for (let eachKey in skillsJson) {
@@ -193,7 +208,7 @@
     }
 
     function main() {
-        let [ username, data ] = packageJson(extractGp(), extractSkills());
+        let [ username, data ] = packageJson(extractGp(), extractPets(), extractSkills());
         sendToHiscoresAPI(username, data);
         updateNotify();
     }
