@@ -1,2 +1,4 @@
 # melvor-hiscores.github.io
-Github pages to host the bookmarklet
+This github page is just used to host the bookmarklet script remotely.
+
+View the site here: https://melvorhiscores.servegame.com/ 
